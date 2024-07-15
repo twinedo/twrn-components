@@ -9,9 +9,9 @@ You can try common component in React Native here, with some additional props an
 # Getting Started
 Please add this one before install:<br />
 yarn:<br />
-`yarn add twrn_styles`<br />
+`yarn add twrn-styles`<br />
 npm:<br />
-`npm install twrn_styles`<br /><br />
+`npm install twrn-styles`<br /><br />
 
 Then, install:<br />
 yarn:<br />
@@ -22,8 +22,8 @@ npm:<br />
 # Example
 
 ```
-import {Button} from 'twrn_components'
-import {TWStyles} from 'twrn_styles'
+import {Button} from 'twrn-components'
+import {TWStyles} from 'twrn-styles'
 
 <Button containerStyle={[TWStyles.alignCenter, TWStyles.justifyCenter]}>Hit me</Button>
 ```
