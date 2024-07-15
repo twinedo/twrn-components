@@ -15,9 +15,9 @@ npm:<br />
 
 Then, install:<br />
 yarn:<br />
-`yarn add twrn_components`<br />
+`yarn add twrn-components`<br />
 npm:<br />
-`npm install twrn_components`<br />
+`npm install twrn-components`<br />
 
 # Example
 
