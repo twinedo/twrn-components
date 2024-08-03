@@ -65,6 +65,7 @@
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^29.5.5",
     "@types/react": "^18.2.44",
+    "@types/react-native-vector-icons": "^6.4.18",
     "babel-plugin-module-resolver": "^5.0.2",
     "commitlint": "^17.0.2",
     "del-cli": "^5.1.0",
@@ -178,5 +179,9 @@
   "create-react-native-library": {
     "type": "library",
     "version": "0.38.2"
+  },
+  "dependencies": {
+    "react-native-select-dropdown": "^4.0.1",
+    "react-native-vector-icons": "^10.1.0"
   }
 }
