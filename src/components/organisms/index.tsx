@@ -1,3 +1,4 @@
+import Accordion from "./accordion";
 import Dropdown from "./dropdown";
 
-export {Dropdown}
+export {Accordion, Dropdown}

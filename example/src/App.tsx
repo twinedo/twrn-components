@@ -1,31 +1,19 @@
 import { StyleSheet, View, Text } from 'react-native';
-import { Button, Column, Dropdown, Row } from 'twrn-components';
+import { Accordion, Button, Spacer } from 'twrn-components';
 export default function App() {
-
-  const dataDropdown = [
-    {
-      id: '1',
-      value: 'A'
-    },
-    {
-      id: '2',
-      value: 'B'
-    },
-  ]
 
   return (
     <View style={styles.container}>
       <Button text='Test' />
       <Text>Result</Text>
-      <Dropdown placeholder='Select' data={dataDropdown} keyValue='value' onSelect={(selectedItem, index) => console.log('selectedItem', selectedItem.value+index)} />
-        <Column>
-          <Text>Test</Text>
-          <Text>Test</Text>
-        </Column>
-        <Row>
-        <Text>Test</Text>
-        <Text>Test</Text>
-        </Row>
+      <Spacer height={300} />
+      <Accordion title='Press' disabled={true} >
+        <Text>kjawndjbawd akwjdnawd akjwda wdkawjdaw d</Text>
+        <Text>kjawndjbawd akwjdnawd akjwda wdkawjdaw d</Text>
+        <Text>kjawndjbawd akwjdnawd akjwda wdkawjdaw d</Text>
+        <Text>kjawndjbawd akwjdnawd akjwda wdkawjdaw d</Text>
+      </Accordion>
+
     </View>
   );
 }
@@ -34,11 +22,36 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    borderWidth: 1,
   },
   box: {
     width: 60,
     height: 60,
     marginVertical: 20,
   },
+  animatedContainer: {
+    overflow: 'hidden',
+    // position: 'absolute'
+  },
+  content: {
+    padding: 10,
+    backgroundColor: 'red',
+    width: 200
+
+  },
+  wrapper: {
+    position: 'absolute',
+    zIndex: 20,
+    borderWidth: 1,
+  },
+  expanded: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+  },
+  collapsed: {
+    borderRadius: 10,
+  }
 });
