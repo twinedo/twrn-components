@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text } from 'react-native';
-import { Button, Dropdown } from 'twrn-components';
+import { Button, Column, Dropdown, Row } from 'twrn-components';
 export default function App() {
 
   const dataDropdown = [
@@ -18,6 +18,14 @@ export default function App() {
       <Button text='Test' />
       <Text>Result</Text>
       <Dropdown placeholder='Select' data={dataDropdown} keyValue='value' onSelect={(selectedItem, index) => console.log('selectedItem', selectedItem.value+index)} />
+        <Column>
+          <Text>Test</Text>
+          <Text>Test</Text>
+        </Column>
+        <Row>
+        <Text>Test</Text>
+        <Text>Test</Text>
+        </Row>
     </View>
   );
 }
