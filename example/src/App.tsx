@@ -1,20 +1,51 @@
-import { StyleSheet, View, Text } from 'react-native';
-import { Accordion, Button, Spacer } from 'twrn-components';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { Button, Grid, Spacer } from 'twrn-components';
 export default function App() {
 
-  return (
-    <View style={styles.container}>
-      <Button text='Test' />
-      <Text>Result</Text>
-      <Spacer height={300} />
-      <Accordion title='Press' disabled={true} >
-        <Text>kjawndjbawd akwjdnawd akjwda wdkawjdaw d</Text>
-        <Text>kjawndjbawd akwjdnawd akjwda wdkawjdaw d</Text>
-        <Text>kjawndjbawd akwjdnawd akjwda wdkawjdaw d</Text>
-        <Text>kjawndjbawd akwjdnawd akjwda wdkawjdaw d</Text>
-      </Accordion>
+  const data = [
+    {
+      id: '1',
+      name: 'John',
+      number: 'xxx'
+    },
+    {
+      id: '2',
+      name: 'Lorem',
+      number: 'xxx'
+    },
+    {
+      id: '3',
+      name: 'Ipsum',
+      number: 'xxx'
+    },
+    {
+      id: '4',
+      name: 'John Doe',
+      number: 'xxx'
+    },
+    {
+      id: '5',
+      name: 'Sit Doler amet',
+      number: 'xxx'
+    },
+  ]
 
-    </View>
+  return (
+    <ScrollView>
+      <View style={styles.container}>
+        <Button text='Test' />
+        <Text>Result</Text>
+        <Spacer height={300} />
+        <Grid data={data} id="id" gridSize={4} itemComponentHeight={400} itemComponent={(item, index) => <View style={{
+          margin: 8,
+          padding: 16,
+          backgroundColor: '#f0f0f0',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}><Text>{item.name}</Text></View>} />
+
+      </View>
+    </ScrollView>
   );
 }
 

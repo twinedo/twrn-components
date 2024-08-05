@@ -1,15 +1,14 @@
 import {
   ActivityIndicator,
+  Pressable,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
-import type { TouchableOpacityProps } from 'react-native';
 import type { TButtonProps } from './button.type';
 import { styles } from './button.style';
 import { TWStyles } from 'twrn-styles';
 
-export default function Button(props: TButtonProps & TouchableOpacityProps) {
+export default function Button(props: TButtonProps) {
   const {
     containerStyle,
     loadingColor = 'white',
@@ -25,7 +24,7 @@ export default function Button(props: TButtonProps & TouchableOpacityProps) {
     postfixContainerStyle,
   } = props;
   return (
-    <TouchableOpacity
+    <Pressable
       style={[
         TWStyles.alignCenter,
         TWStyles.row,
@@ -68,6 +67,6 @@ export default function Button(props: TButtonProps & TouchableOpacityProps) {
           {postfix}
         </View>
       )}
-    </TouchableOpacity>
+    </Pressable>
   );
 }

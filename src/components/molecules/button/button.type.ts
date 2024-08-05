@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { TextStyle, ViewStyle } from "react-native"
+import type { PressableProps, TextStyle, ViewStyle } from "react-native"
 
 export type TButtonProps = {
     prefix?: ReactNode;
@@ -14,4 +14,4 @@ export type TButtonProps = {
     loading?: boolean;
     loadingColor?: string;
     children?: ReactNode;
-}
+} & PressableProps
