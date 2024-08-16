@@ -29,7 +29,10 @@ export default function Toolbar(props: TToolbarProps & ViewProps) {
         containerStyle,
       ]}
       {...props}>
-      <View style={[TWStyles.flex0p5, prefixContainerStyle]}>{prefix}</View>
+      {prefix && <View style={[TWStyles.flex0p5, prefixContainerStyle]}>{prefix}</View>}
+      {prefix === undefined && postfix && (
+        <View style={[TWStyles.flex0p5]} />
+      )}
 
       {text !== '' ? (
         <View style={[TWStyles.flex3, TWStyles.alignStart]}>
@@ -37,16 +40,20 @@ export default function Toolbar(props: TToolbarProps & ViewProps) {
         </View>
       ) : typeof children === 'string' ? (
         <View style={[TWStyles.flex3, TWStyles.alignCenter]}>
-          <Text style={[styles.text, textStyle]}>{children}</Text>
+          <Text style={[styles.text, TWStyles.w100, textStyle]}>{children}</Text>
         </View>
       ) : (
         children
       )}
 
-      <View
+      {postfix && <View
         style={[TWStyles.flex0p5, TWStyles.alignEnd, postfixContainerStyle]}>
         {postfix}
-      </View>
+      </View>}
+      {postfix === undefined && prefix && (
+        <View style={[TWStyles.flex0p5]} />
+      )}
+
     </View>
   );
 }

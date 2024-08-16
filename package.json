@@ -181,6 +181,7 @@
     "version": "0.38.2"
   },
   "dependencies": {
+    "react-hook-form": "^7.52.2",
     "react-native-select-dropdown": "^4.0.1",
     "react-native-vector-icons": "^10.1.0"
   }
