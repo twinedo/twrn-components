@@ -1,5 +1,53 @@
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import { Button, Grid, Spacer } from 'twrn-components';
+import { Forms } from '../../src/components';
+import { useForm } from 'react-hook-form';
+import { useMemo } from 'react';
+import { EInputType } from '../../src/components/organisms/forms/forms.enum';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup'
+import { TWStyles } from 'twrn-styles';
+
+export const relationList = [
+  {
+    label: 'AYAH',
+    value: 'AYAH'
+  },
+  {
+    label: 'IBU',
+    value: 'IBU',
+  },
+  {
+    label: 'SAUDARA LAKI-LAKI',
+    value: 'SAUDARA LAKI-LAKI',
+  },
+  {
+    label: 'SAUDARA PEREMPUAN',
+    value: 'SAUDARA PEREMPUAN',
+  },
+  {
+    label: 'PAMAN',
+    value: 'PAMAN',
+  },
+  {
+    label: 'BIBI',
+    value: 'BIBI',
+  },
+  {
+    label: 'SEPUPU',
+    value: 'SEPUPU',
+  },
+]
+
+export type TEmergencyContact = {
+  contactName: string;
+  relation: string;
+  phoneNumber: string;
+  address1: string;
+  address2: string;
+  address3: string;
+}
+
 export default function App() {
 
   const data = [
@@ -30,22 +78,106 @@ export default function App() {
     },
   ]
 
+  const inputFields = useMemo(() => {
+    return [
+        {
+            inputType: EInputType.TEXT_FIELD,
+            controlName: 'contactName',
+            title: 'Contact Name',
+            placeholder: 'Contact Name',
+            isRequired: true,
+            maxLength: 30,
+            // icon: <Ionicons name="person" size={24} color={PruColor.grey99} />
+        },
+        {
+            inputType: EInputType.DROPDOWN,
+            controlName: 'relation',
+            title: 'Relation',
+            placeholder: 'Relation',
+            isRequired: true,
+            maxLength: 30,
+            dropdownOptions: relationList,
+        },
+        {
+            inputType: EInputType.TEXT_FIELD,
+            controlName: 'phoneNumber',
+            title: 'Phone Number',
+            placeholder: 'Phone Number',
+            isRequired: true,
+            maxLength: 30,
+        },
+        {
+            inputType: EInputType.TEXT_FIELD,
+            controlName: 'address1',
+            title: 'Street',
+            placeholder: 'Street',
+            isRequired: true,
+            maxLength: 30,
+        },
+        {
+            inputType: EInputType.TEXT_FIELD,
+            controlName: 'address2',
+            title: 'RT RW',
+            placeholder: 'RT RW',
+            isRequired: true,
+            maxLength: 30,
+            icon: <View style={{ height: 24, width: 24 }} />
+        },
+        {
+            inputType: EInputType.TEXT_FIELD,
+            controlName: 'address3',
+            title: 'District',
+            placeholder: 'District',
+            isRequired: true,
+            maxLength: 30,
+            icon: <View style={{ height: 24, width: 24 }} />
+        },
+    ];
+}, []);
+
+const schema = useMemo(() => {
+    return yup.object().shape({
+        contactName: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
+        relation: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
+        phoneNumber: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
+        address1: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
+        address2: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
+        address3: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
+    });
+}, []);
+
+  const {
+    control: control,
+    handleSubmit: handleSubmit,
+    formState: { isValid, errors },
+    setValue,
+} = useForm({
+    mode: 'all',
+    resolver: yupResolver(schema),
+    defaultValues: {
+        contactName: '',
+        relation: '',
+        phoneNumber: '',
+        address1: '',
+        address2: '',
+        address3: '',
+    } as TEmergencyContact,
+});
+
+const checkError = useMemo(() => {
+  const keyError = Object.keys(errors);
+  return keyError.length > 0 ? errors : undefined
+}, [errors])
+
   return (
     <ScrollView>
       <View style={styles.container}>
         <Button text='Test' />
-        <Text>Result</Text>
-        <Spacer height={300} />
-        <Grid data={data} id="id" gridSize={4} itemComponentHeight={400} itemComponent={(item, index) => <View style={{
-          margin: 8,
-          padding: 16,
-          backgroundColor: '#f0f0f0',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}><Text>{item.name}</Text></View>} />
-
+        {/* <Text style={{color: 'black'}}>Result</Text> */}
+        {/* <Spacer height={300} /> */}
+        <Forms inputFields={inputFields} formControl={control} setFormControl={setValue} errors={checkError} />
       </View>
-    </ScrollView>
+      </ScrollView>
   );
 }
 
@@ -55,6 +187,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
     borderWidth: 1,
+    padding: 12
   },
   box: {
     width: 60,

@@ -7,8 +7,10 @@ import {
 import type { TButtonProps } from './button.type';
 import { styles } from './button.style';
 import { TWStyles } from 'twrn-styles';
+import { memo } from 'react';
 
-export default function Button(props: TButtonProps) {
+const Button = (props: TButtonProps) => {
+  console.log('ini button');
   const {
     containerStyle,
     loadingColor = 'white',
@@ -70,3 +72,5 @@ export default function Button(props: TButtonProps) {
     </Pressable>
   );
 }
+
+export default memo(Button)
