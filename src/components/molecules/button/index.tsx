@@ -10,7 +10,6 @@ import { TWStyles } from 'twrn-styles';
 import { memo } from 'react';
 
 const Button = (props: TButtonProps) => {
-  console.log('ini button');
   const {
     containerStyle,
     loadingColor = 'white',

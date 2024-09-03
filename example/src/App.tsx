@@ -1,6 +1,6 @@
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, KeyboardAvoidingView, Alert, Platform, TouchableWithoutFeedback, Keyboard, SafeAreaView } from 'react-native';
 import { Button, Grid, Spacer } from 'twrn-components';
-import { Forms } from '../../src/components';
+import { Forms, KeyboardAvoidView } from '../../src/components';
 import { useForm } from 'react-hook-form';
 import { useMemo } from 'react';
 import { EInputType } from '../../src/components/organisms/forms/forms.enum';
@@ -156,7 +156,7 @@ const schema = useMemo(() => {
     resolver: yupResolver(schema),
     defaultValues: {
         contactName: '',
-        relation: '',
+        relation: 'kjdnwkjd',
         phoneNumber: '',
         address1: '',
         address2: '',
@@ -169,15 +169,24 @@ const checkError = useMemo(() => {
   return keyError.length > 0 ? errors : undefined
 }, [errors])
 
+const onSubmit = (data) => {
+  console.log(data)
+  Alert.alert('dnwd')
+}
+
   return (
-    <ScrollView>
+    <SafeAreaView style={TWStyles.displayFlex}>
+
+      <KeyboardAvoidView>
       <View style={styles.container}>
-        <Button text='Test' />
         {/* <Text style={{color: 'black'}}>Result</Text> */}
         {/* <Spacer height={300} /> */}
-        <Forms inputFields={inputFields} formControl={control} setFormControl={setValue} errors={checkError} />
+        <Forms inputFields={inputFields} formControl={control} setFormControl={setValue} errors={errors} />
+        <Button text='Test' onPress={handleSubmit(onSubmit)} />
+
       </View>
-      </ScrollView>
+      </KeyboardAvoidView>
+      </SafeAreaView>
   );
 }
 

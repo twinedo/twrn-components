@@ -1,6 +1,6 @@
 import type { SelectDropdownProps } from "react-native-select-dropdown";
 
-export type TDropdown = {
+export type TDropdownProps = {
   data: any[];
   placeholder?: string;
   keyValue?: string;

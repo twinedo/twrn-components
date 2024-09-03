@@ -6,26 +6,10 @@ import {
   Text,
 } from 'react-native';
 import { TWStyles, TWColors } from 'twrn-styles';
-import type { ReactNode } from 'react';
-import type { TextStyle, ViewStyle, TextInputProps } from 'react-native';
 import { CDefaultValues } from '../../../utils/common.const';
+import type { TInputProps } from './input.type';
 
-export interface IInputProps extends TextInputProps {
-  prefix?: ReactNode;
-  postfix?: ReactNode;
-  style?: TextStyle | TextStyle[];
-  containerStyle?: ViewStyle | ViewStyle[];
-  prefixStyle?: ViewStyle | ViewStyle[];
-  postfixStyle?: ViewStyle | ViewStyle[];
-  title?: ReactNode | string;
-  titleStyle?: TextStyle;
-  required?: boolean;
-  errors?: [string, position?: 'left' | 'right']; //["error message", "position error message: left | right"];
-  textErrorStyle?: TextStyle;
-  // You can add more TextInput props here
-}
-
-const Input: React.FC<IInputProps> = ({
+const Input: React.FC<TInputProps> = ({
   prefix,
   postfix,
   style,
@@ -82,7 +66,7 @@ const Input: React.FC<IInputProps> = ({
         />
         {postfix && <View style={[styles.postfix, postfixStyle]}>{postfix}</View>}
       </View>
-      {errors &&
+      {errors[0].length > 0 &&
         <Text style={[styles.textError, { textAlign: errors[1] === 'left' ? 'left' : 'right' }, textErrorStyle]}>
           {errors[0]}
         </Text>

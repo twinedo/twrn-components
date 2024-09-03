@@ -1,8 +1,9 @@
-import type { Control, FieldError, FieldErrors, UseFormSetValue } from "react-hook-form";
+import type { Control, FieldErrors, UseFormSetValue } from "react-hook-form";
 import type { EInputType, ETextType } from "./forms.enum";
 import type { ReactNode } from "react";
 import type { ViewStyle } from "react-native";
-import type { TDropdown } from "../dropdown/dropdown.type";
+import type { TDropdownProps } from "../dropdown/dropdown.type";
+import type { TInputProps } from "../../molecules/input/input.type";
 
 export type DropdownFields = {
   id?: string;
@@ -26,8 +27,8 @@ export type InputField = {
   tooltipDesc?: string;
   tooltipList?: string[] | [];
   icon?: ReactNode;
-  dropdownProps?: TDropdown;
-
+  dropdownProps?: TDropdownProps;
+  inputProps?: TInputProps;
 };
 
 export type FormInputProps = {

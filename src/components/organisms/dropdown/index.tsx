@@ -2,10 +2,10 @@ import { Text, View } from 'react-native'
 import SelectDropdown from 'react-native-select-dropdown'
 import { styles } from './dropdown.style'
 import Entypo from 'react-native-vector-icons/Entypo'
-import type { TDropdown } from './dropdown.type'
+import type { TDropdownProps } from './dropdown.type'
 
-const Dropdown = (props: TDropdown) => {
-  const { placeholder = 'Select', data, keyValue, renderButton, renderItem, iconColor = 'grey' } = props;
+const Dropdown = (props: TDropdownProps) => {
+  const { placeholder = 'Select', data, keyValue = '', renderButton, renderItem, iconColor = 'grey' } = props;
   return (
     <View>
       <SelectDropdown
