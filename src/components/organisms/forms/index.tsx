@@ -24,21 +24,21 @@ const Forms = (props: FormInputProps) => {
                   switch (inputField.inputType) {
                     case EInputType.DROPDOWN:
                       return (
-                        
-                          <View style={[TWStyles.displayFlex, TWStyles.alignEnd, TWStyles.row]}>
-                                            <View style={TWStyles.w100}>
-                                                <Dropdown
-                                                    data={inputField.dropdownOptions ?? []}
-                                                    onSelect={(selectedValue: any) => {
-                                                        onChange(selectedValue);
-                                                        setFormControl(inputField.controlName, selectedValue);
-                                                    }}
-                                                    {...inputField.dropdownProps}
-                                                />
-                                            </View>
-                                        {errors && errors[inputField.controlName] && formValues[inputField.controlName] === "" && <Text style={{ color: TWColors.RED }}>{errors[inputField.controlName]?.message?.toString()}</Text>}
-                                        </View>
-                        
+
+                          // <View style={[TWStyles.displayFlex, TWStyles.alignEnd, TWStyles.row]}>
+                          //                   <View style={TWStyles.w100}>
+                          //                       <Dropdown
+                          //                           data={inputField.dropdownOptions ?? []}
+                          //                           onSelect={(selectedValue: any) => {
+                          //                               onChange(selectedValue);
+                          //                               setFormControl(inputField.controlName, selectedValue);
+                          //                           }}
+                          //                           {...inputField.dropdownProps}
+                          //                       />
+                          //                   </View>
+                          //               {errors && errors[inputField.controlName] && formValues[inputField.controlName] === "" && <Text style={{ color: TWColors.RED }}>{errors[inputField.controlName]?.message?.toString()}</Text>}
+                          //               </View>
+
                       );
                     case EInputType.DATE:
                       return (
