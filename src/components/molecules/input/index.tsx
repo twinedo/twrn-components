@@ -87,13 +87,14 @@ const styles = StyleSheet.create({
   },
   input: {
     padding: 8,
+    height: 50
   },
   postfix: {
     padding: 8,
   },
   containerError: {
     borderWidth: 1,
-    borderColor: TWColors.GREYB11,
+    borderColor: TWColors.RED,
     borderRadius: 5,
     position: 'relative',
   },

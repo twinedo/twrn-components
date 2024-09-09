@@ -7,6 +7,7 @@ import { EInputType } from '../../src/components/organisms/forms/forms.enum';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { TWStyles } from 'twrn-styles';
+import type { InputField } from '../../src/components/organisms/forms/forms.type';
 
 export const relationList = [
   {
@@ -96,7 +97,10 @@ export default function App() {
             placeholder: 'Relation',
             isRequired: true,
             maxLength: 30,
-            dropdownOptions: relationList,
+            dropdownProps: {
+              keyValue: 'value',
+              data: [{label: 'a',value: 'a'},{label: 'c', value:'c'}]
+            }
         },
         {
             inputType: EInputType.TEXT_FIELD,
@@ -132,7 +136,7 @@ export default function App() {
             maxLength: 30,
             icon: <View style={{ height: 24, width: 24 }} />
         },
-    ];
+    ] as InputField[];
 }, []);
 
 const schema = useMemo(() => {
@@ -156,7 +160,7 @@ const schema = useMemo(() => {
     resolver: yupResolver(schema),
     defaultValues: {
         contactName: '',
-        relation: 'kjdnwkjd',
+        relation: '',
         phoneNumber: '',
         address1: '',
         address2: '',
@@ -179,11 +183,8 @@ const onSubmit = (data) => {
 
       <KeyboardAvoidView>
       <View style={styles.container}>
-        {/* <Text style={{color: 'black'}}>Result</Text> */}
-        {/* <Spacer height={300} /> */}
         <Forms inputFields={inputFields} formControl={control} setFormControl={setValue} errors={errors} />
         <Button text='Test' onPress={handleSubmit(onSubmit)} />
-
       </View>
       </KeyboardAvoidView>
       </SafeAreaView>

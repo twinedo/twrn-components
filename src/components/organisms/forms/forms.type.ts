@@ -22,7 +22,6 @@ export type InputField = {
   isRequired?: boolean;
   isHide?: boolean;
   isDisabled?: boolean;
-  dropdownOptions?: DropdownFields[]; // dropdown mode
   formatDate?: string; // date mode
   tooltipDesc?: string;
   tooltipList?: string[] | [];
