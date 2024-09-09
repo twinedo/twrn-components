@@ -58,7 +58,7 @@ const Dropdown = (props: TDropdownProps) => {
           if (!renderItem) {
             return (
               <View style={[styles.dropdownItemStyle, (isSelected && { backgroundColor: '#D2D9DF' }), dropdownItemStyle]}>
-                <Text style={[styles.dropdownItemTxtStyle, dropdownItemTxtStyle]}>{item && typeof item === 'object' ? item[keyValue] : item}
+                <Text style={[styles.dropdownItemTxtStyle, dropdownItemTxtStyle]}>{item && typeof item === 'object' ? item[keyValue ?? ''] : item}
                 </Text>
               </View>
             );
