@@ -1,7 +1,7 @@
 export enum EInputType {
   TEXT_FIELD = 'text-field',
   DROPDOWN = 'dropdown',
-  DATE = 'date',
+  DATE_TIME = 'date-time',
 }
 
 export enum ETextType {

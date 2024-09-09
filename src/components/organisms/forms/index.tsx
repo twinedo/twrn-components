@@ -7,6 +7,7 @@ import { EInputType, ETextType } from './forms.enum';
 import { Input } from '../../molecules';
 import { Dropdown } from 'twrn-components';
 import { memo } from 'react';
+import DateTime from '../date-time-picker';
 
 const Forms = (props: FormInputProps) => {
   const { inputFields, formControl, setFormControl, errors, containerStyle } = props;
@@ -25,18 +26,17 @@ const Forms = (props: FormInputProps) => {
                   switch (inputField.inputType) {
                     case EInputType.DROPDOWN:
                       return (
-                        <View style={[TWStyles.displayFlex, TWStyles.alignEnd, TWStyles.row, { marginBottom: rowGap }]}>
+                        <View style={[TWStyles.displayFlex, TWStyles.alignEnd, TWStyles.row]}>
                           <View style={TWStyles.w100}>
                             <Dropdown
                               title={inputField.title}
-                              required
+                              required={inputField.isRequired}
                               keyValue={inputField.dropdownProps?.keyValue ?? ''}
                               data={inputField?.dropdownProps?.data!}
                               placeholder={inputField.placeholder}
                               renderButton={undefined ?? inputField.dropdownProps?.renderButton!}
                               renderItem={undefined ?? inputField.dropdownProps?.renderItem!}
                               onSelect={(selectedValue: any) => {
-
                                 onChange(selectedValue);
                                 setFormControl(inputField.controlName, selectedValue);
                               }}
@@ -46,10 +46,23 @@ const Forms = (props: FormInputProps) => {
                           </View>
                         </View>
                       );
-                    case EInputType.DATE:
+                    case EInputType.DATE_TIME:
                       return (
-                        <View style={[TWStyles.row, TWStyles.alignEnd, TWStyles.w100]}>
+                        <View style={[TWStyles.displayFlex, TWStyles.row, TWStyles.alignEnd, TWStyles.w100]}>
                           {/* Date input field */}
+                          <DateTime
+                            title={inputField.title}
+                            required={inputField.isRequired}
+                            placeholder={inputField.placeholder}
+                            value={value}
+                            errors={[errors[inputField.controlName]?.message?.toString() ?? '', 'right']}
+                            onSelect={(_, date) => {
+                              onChange(date);
+                              setFormControl(inputField.controlName, date);
+                            }}
+                            dateFormat='longdate'
+                            {...inputField.dateTimeProps}
+                          />
                         </View>
                       );
                     default:

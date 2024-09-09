@@ -13,11 +13,12 @@ const Dropdown = (props: TDropdownProps) => {
     keyValue,
     renderButton = undefined,
     renderItem = undefined,
-    iconColor = 'grey',
+    iconColor = TWColors.GREYB11,
     title,
     required,
     titleStyle,
     dropdownButtonStyle,
+    dropdownButtonErrorStyle,
     dropdownItemStyle,
     dropdownButtonTxtStyle,
     dropdownItemTxtStyle,
@@ -45,7 +46,7 @@ const Dropdown = (props: TDropdownProps) => {
         renderButton={(selectedItem, isOpened) => {
           if (!renderButton) {
             return (
-              <View style={[errors[0]?.length > 0 ? styles.dropdownButtonErrorStyle : styles.dropdownButtonStyle, dropdownButtonStyle]}>
+              <View style={[errors[0]?.length > 0 ? styles.dropdownButtonErrorStyle : styles.dropdownButtonStyle, errors[0]?.length > 0 ? dropdownButtonErrorStyle : dropdownButtonStyle]}>
                 <Text style={[selectedItem ? styles.dropdownButtonTxtStyle : styles.dropdownButtonTxtSelectedStyle, dropdownButtonTxtStyle]}>
                   {selectedItem && typeof selectedItem === 'object' ? selectedItem[keyValue ?? ''] : (selectedItem ?? placeholder)}                </Text>
                 <Entypo name={isOpened ? 'chevron-up' : 'chevron-down'} color={iconColor} style={styles.dropdownButtonArrowStyle} />

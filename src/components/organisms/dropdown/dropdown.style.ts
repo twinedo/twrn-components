@@ -28,14 +28,11 @@ export const styles = StyleSheet.create({
   },
   dropdownButtonTxtStyle: {
     flex: 1,
-    // fontSize: 14,
     fontWeight: '500',
     color: '#151E26',
   },
   dropdownButtonTxtSelectedStyle: {
     flex: 1,
-    // fontSize: 18,
-    // fontWeight: 'bold',
     color: '#151E26',
   },
   dropdownButtonArrowStyle: {

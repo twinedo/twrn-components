@@ -42,6 +42,7 @@ export const relationList = [
 
 export type TEmergencyContact = {
   contactName: string;
+  date: string;
   relation: string;
   phoneNumber: string;
   address1: string;
@@ -50,34 +51,6 @@ export type TEmergencyContact = {
 }
 
 export default function App() {
-
-  const data = [
-    {
-      id: '1',
-      name: 'John',
-      number: 'xxx'
-    },
-    {
-      id: '2',
-      name: 'Lorem',
-      number: 'xxx'
-    },
-    {
-      id: '3',
-      name: 'Ipsum',
-      number: 'xxx'
-    },
-    {
-      id: '4',
-      name: 'John Doe',
-      number: 'xxx'
-    },
-    {
-      id: '5',
-      name: 'Sit Doler amet',
-      number: 'xxx'
-    },
-  ]
 
   const inputFields = useMemo(() => {
     return [
@@ -102,6 +75,16 @@ export default function App() {
               data: [{label: 'a',value: 'a'},{label: 'c', value:'c'}]
             }
         },
+        {
+          inputType: EInputType.DATE_TIME,
+          controlName: 'date',
+          title: 'Date',
+          placeholder: new Date(),
+          isRequired: true,
+          dateTimeProps: {
+            dateFormat: 'DD MMMM YYYY'
+          }
+      },
         {
             inputType: EInputType.TEXT_FIELD,
             controlName: 'phoneNumber',
@@ -143,6 +126,7 @@ const schema = useMemo(() => {
     return yup.object().shape({
         contactName: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
         relation: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
+        date: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
         phoneNumber: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
         address1: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
         address2: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
@@ -161,6 +145,7 @@ const schema = useMemo(() => {
     defaultValues: {
         contactName: '',
         relation: '',
+        date: '',
         phoneNumber: '',
         address1: '',
         address2: '',

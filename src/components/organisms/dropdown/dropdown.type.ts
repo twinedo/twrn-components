@@ -13,6 +13,7 @@ export type TDropdownProps = {
   titleStyle?: TextStyle;
   required?: boolean;
   dropdownButtonStyle?: ViewStyle | ViewStyle[];
+  dropdownButtonErrorStyle?: ViewStyle | ViewStyle[];
   dropdownItemStyle?: ViewStyle | ViewStyle[];
   dropdownButtonTxtStyle?: TextStyle;
   dropdownItemTxtStyle?: TextStyle;
