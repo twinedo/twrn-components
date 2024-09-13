@@ -1,8 +1,8 @@
-import { Dimensions, Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import { TWStyles, TWColors } from 'twrn-styles';
 import type { TFab } from './fab.type';
 
-const FloatingAactionButton = (props: TFab) => {
+const FloatingActionButton = (props: TFab) => {
   const {
     backgroundColor = TWColors.PRIMARY,
     children,
@@ -29,7 +29,7 @@ const FloatingAactionButton = (props: TFab) => {
   );
 };
 
-export default FloatingAactionButton;
+export default FloatingActionButton;
 
 const styles = StyleSheet.create({
   container: {
@@ -50,8 +50,9 @@ const styles = StyleSheet.create({
   },
   containerCenter: {
     bottom: 10,
-    left: Dimensions.get('window').width / 2,
-    right: Dimensions.get('window').width / 2,
+    left: '50%',
+    right: '50%',
+    marginLeft: -30,
     width: 60,
     height: 60,
     borderRadius: 60,

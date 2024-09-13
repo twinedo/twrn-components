@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, ScrollView, KeyboardAvoidingView, Alert, Platform, TouchableWithoutFeedback, Keyboard, SafeAreaView } from 'react-native';
-import { Button, Grid, Spacer } from 'twrn-components';
+import { Button, FloatingActionButton, Spacer } from 'twrn-components';
 import { Forms, KeyboardAvoidView } from '../../src/components';
 import { useForm } from 'react-hook-form';
 import { useMemo } from 'react';
@@ -171,6 +171,7 @@ const onSubmit = (data) => {
         <Forms inputFields={inputFields} formControl={control} setFormControl={setValue} errors={errors} />
         <Button text='Test' onPress={handleSubmit(onSubmit)} />
       </View>
+        <FloatingActionButton position='bottom-center' />
       </KeyboardAvoidView>
       </SafeAreaView>
   );
