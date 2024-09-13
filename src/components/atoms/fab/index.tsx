@@ -8,10 +8,12 @@ const FloatingActionButton = (props: TFab) => {
     children,
     onPress,
     position,
+    containerStyle
   } = props;
 
   return (
     <Pressable
+      {...props}
       onPress={onPress}
       style={[
         TWStyles.absolute,
@@ -23,6 +25,7 @@ const FloatingActionButton = (props: TFab) => {
           ? styles.containerLeft
           : styles.container,
         {backgroundColor},
+        containerStyle
       ]}>
       {children}
     </Pressable>
