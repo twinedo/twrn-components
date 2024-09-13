@@ -53,7 +53,7 @@ const Input: React.FC<TInputProps> = ({
         style={[
           TWStyles.row,
           TWStyles.alignCenter,
-          errors ? styles.containerError : styles.container,
+          errors[0].length > 0 ? styles.containerError : styles.container,
           containerStyle,
         ]}>
         {prefix && <View style={[styles.prefix, prefixStyle]}>{prefix}</View>}
