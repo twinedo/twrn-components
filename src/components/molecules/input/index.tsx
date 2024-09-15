@@ -23,13 +23,12 @@ const Input: React.FC<TInputProps> = ({
   onChangeText,
   errors = ['', 'right'],
   textErrorStyle,
+  value = CDefaultValues.DEFAULT_STRING,
   ...textInputProps
 }) => {
-  const [value, setValue] = useState<string>(CDefaultValues.DEFAULT_STRING)
 
   const onTextChange = useCallback((value: string) => {
     if (value.length <= maxLength!) {
-      setValue(value);
       if (onChangeText) {
         onChangeText(value);
       }
