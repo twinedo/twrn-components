@@ -1,8 +1,8 @@
 import { StyleSheet, View, Text, ScrollView, KeyboardAvoidingView, Alert, Platform, TouchableWithoutFeedback, Keyboard, SafeAreaView } from 'react-native';
-import { Button, FloatingActionButton, Spacer } from 'twrn-components';
+import { Button, Input, Spacer } from 'twrn-components';
 import { Forms, KeyboardAvoidView } from '../../src/components';
 import { useForm } from 'react-hook-form';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { EInputType } from '../../src/components/organisms/forms/forms.enum';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -163,15 +163,23 @@ const onSubmit = (data) => {
   Alert.alert('dnwd')
 }
 
+const [txtInput, setTxtInput] = useState('')
+
   return (
     <SafeAreaView style={TWStyles.displayFlex}>
-
       <KeyboardAvoidView>
       <View style={styles.container}>
         <Forms inputFields={inputFields} formControl={control} setFormControl={setValue} errors={errors} />
         <Button text='Test' onPress={handleSubmit(onSubmit)} />
+        <Input
+                        placeholder='Title here'
+                        title="Title"
+                        onChangeText={setTxtInput}
+                        value={txtInput}
+                        // errors={[errors.title?.message! ?? '', 'right']}
+                    />
+        <Button text='dakwdmawkdm' onPress={() => console.log('value', txtInput)} />
       </View>
-        <FloatingActionButton position='bottom-center' />
       </KeyboardAvoidView>
       </SafeAreaView>
   );

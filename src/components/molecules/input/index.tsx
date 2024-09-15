@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import {
   View,
   TextInput,
@@ -27,13 +27,16 @@ const Input: React.FC<TInputProps> = ({
   ...textInputProps
 }) => {
 
-  const onTextChange = useCallback((value: string) => {
-    if (value.length <= maxLength!) {
-      if (onChangeText) {
-        onChangeText(value);
-      }
+  const [textCounter, setTextCounter] = useState(0);
+
+  const onTextChange = useCallback((val: string) => {
+    const limitedText = val.slice(0, maxLength);
+    if (onChangeText) {
+      onChangeText(limitedText);
+      if (value !== undefined) return;
+      setTextCounter(limitedText.length);
     }
-  }, [maxLength, onChangeText]);
+  }, [maxLength, onChangeText, value]);
 
   return (
     <View style={[TWStyles.rowGap12, TWStyles.w100, TWStyles.relative]}>
@@ -45,7 +48,7 @@ const Input: React.FC<TInputProps> = ({
             {required && <Text style={{ color: TWColors.RED }}>*</Text>}
           </View>
         )}
-        {maxLength && <View><Text style={[TWStyles.headingMedium.h3, titleStyle]}>{value.length}/ {maxLength}</Text></View>}
+        {maxLength && <View><Text style={[TWStyles.headingMedium.h3, titleStyle]}>{value.length ?? textCounter}/ {maxLength}</Text></View>}
       </View>
 
       <View
@@ -61,7 +64,7 @@ const Input: React.FC<TInputProps> = ({
           style={[TWStyles.displayFlex, styles.input, style]}
           onChangeText={onTextChange}
           value={value}
-
+          maxLength={maxLength}
         />
         {postfix && <View style={[styles.postfix, postfixStyle]}>{postfix}</View>}
       </View>
