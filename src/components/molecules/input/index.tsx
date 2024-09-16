@@ -2,12 +2,12 @@ import React, { memo, useCallback, useState } from 'react';
 import {
   View,
   TextInput,
-  StyleSheet,
   Text,
 } from 'react-native';
 import { TWStyles, TWColors } from 'twrn-styles';
 import { CDefaultValues } from '../../../utils/common.const';
 import type { TInputProps } from './input.type';
+import { styles } from './input.style';
 
 const Input: React.FC<TInputProps> = ({
   prefix,
@@ -76,34 +76,5 @@ const Input: React.FC<TInputProps> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1,
-    borderColor: TWColors.GREYB11,
-    borderRadius: 5,
-    position: 'relative',
-  },
-  prefix: {
-    padding: 8,
-  },
-  input: {
-    padding: 8,
-    height: 50
-  },
-  postfix: {
-    padding: 8,
-  },
-  containerError: {
-    borderWidth: 1,
-    borderColor: TWColors.RED,
-    borderRadius: 5,
-    position: 'relative',
-  },
-  textError: {
-    color: TWColors.RED,
-    fontStyle: 'italic'
-  }
-});
 
 export default memo(Input);
