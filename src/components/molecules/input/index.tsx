@@ -44,11 +44,11 @@ const Input: React.FC<TInputProps> = ({
 
         {title && (
           <View style={[TWStyles.row, TWStyles.columnGap4, titleStyle]}>
-            <Text style={[TWStyles.headingMedium.h3]}>{title}</Text>
+            <Text style={[styles.h3]}>{title}</Text>
             {required && <Text style={{ color: TWColors.RED }}>*</Text>}
           </View>
         )}
-        {maxLength && <View><Text style={[TWStyles.headingMedium.h3, titleStyle]}>{value.length ?? textCounter}/ {maxLength}</Text></View>}
+        {maxLength && <View><Text style={[styles.h3, titleStyle]}>{value.length ?? textCounter}/ {maxLength}</Text></View>}
       </View>
 
       <View
