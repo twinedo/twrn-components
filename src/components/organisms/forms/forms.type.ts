@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import type { ViewStyle } from "react-native";
 import type { TDropdownProps } from "../dropdown/dropdown.type";
 import type { TInputProps } from "../../molecules/input/input.type";
-import type { TDateTimePicker } from "../date-time-picker/date-time-picker.type";
+import type { TDateTimePickerProps } from "../date-time-picker/date-time-picker.type";
 
 export type DropdownFields = {
   id?: string;
@@ -29,7 +29,7 @@ export type InputField = {
   icon?: ReactNode;
   dropdownProps?: TDropdownProps;
   inputProps?: TInputProps;
-  dateTimeProps?: TDateTimePicker;
+  dateTimeProps?: TDateTimePickerProps;
 };
 
 export type FormInputProps = {
