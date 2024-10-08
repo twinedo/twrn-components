@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { View, Text, Animated, Pressable } from 'react-native';
 import { styles } from './accordion.style';
-import type { TAccordion } from './accordion.type';
+import type { TAccordionProps } from './accordion.type';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-const Accordion = (props: TAccordion) => {
+const Accordion = (props: TAccordionProps) => {
   const { children,
     containerStyle,
     titleContainerStyle,

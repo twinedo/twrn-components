@@ -1,8 +1,8 @@
 import { Pressable, StyleSheet } from 'react-native';
 import { TWStyles, TWColors } from 'twrn-styles';
-import type { TFab } from './fab.type';
+import type { TFabProps } from './fab.type';
 
-const FloatingActionButton = (props: TFab) => {
+const FloatingActionButton = (props: TFabProps) => {
   const {
     backgroundColor = TWColors.PRIMARY,
     children,

@@ -7,7 +7,7 @@ import {
 import type { TButtonProps } from './button.type';
 import { styles } from './button.style';
 import { TWStyles } from 'twrn-styles';
-import { memo } from 'react';
+import { memo, useState } from 'react';
 
 const Button = (props: TButtonProps) => {
   const {
@@ -23,10 +23,16 @@ const Button = (props: TButtonProps) => {
     prefixContainerStyle,
     postfix,
     postfixContainerStyle,
+    isTouchEffect = true,
   } = props;
+
+  const [isPressed, setIsPressed] = useState(false);
+
   return (
     <Pressable
-      style={[
+      onPressIn={() => setIsPressed(true)}
+      onPressOut={() => setIsPressed(false)}
+      style={({pressed}) =>[
         TWStyles.alignCenter,
         TWStyles.row,
         TWStyles.justifySpaceBetween,
@@ -35,6 +41,7 @@ const Button = (props: TButtonProps) => {
         {...styles.container},
         {backgroundColor, borderRadius},
         containerStyle,
+        isTouchEffect && (pressed || isPressed) ? {opacity: 0.6} : null
       ]}
       {...props}>
       {prefix && (

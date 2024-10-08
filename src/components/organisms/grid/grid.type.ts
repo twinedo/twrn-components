@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type TGrid = {
+export type TGridProps = {
   data: any[];
   id: string | number;
   gridSize: 1 | 2 | 3 | 4;

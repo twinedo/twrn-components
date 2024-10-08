@@ -2,7 +2,7 @@ import type { DatePickerOptions, DateTimePickerEvent, TimePickerOptions } from "
 import type { ReactNode } from "react";
 import type { TextStyle, ViewStyle } from "react-native";
 
-export type TDateTimePicker = {
+export type TDateTimePickerProps = {
   containerStyle?: ViewStyle | ViewStyle[]
   errors?: [string, position?: 'left' | 'right']
   required?: boolean

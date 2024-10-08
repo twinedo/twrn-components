@@ -1,7 +1,7 @@
 import type { ReactNode } from "react"
 import type { TextStyle, ViewStyle } from "react-native";
 
-export type TAccordion = {
+export type TAccordionProps = {
   children: ReactNode;
   containerStyle?: ViewStyle;
   titleContainerStyle?: ViewStyle;

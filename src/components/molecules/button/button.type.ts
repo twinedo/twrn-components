@@ -14,4 +14,5 @@ export type TButtonProps = {
     loading?: boolean;
     loadingColor?: string;
     children?: ReactNode;
+    isTouchEffect?: boolean;
 } & PressableProps

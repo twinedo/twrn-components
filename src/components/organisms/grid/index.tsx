@@ -1,7 +1,7 @@
 import { Dimensions, FlatList, Pressable, View } from 'react-native'
-import type { TGrid } from './grid.type';
+import type { TGridProps } from './grid.type';
 
-const Grid = (props: TGrid) => {
+const Grid = (props: TGridProps) => {
   const {data, id, gridSize = 2, itemComponent, onPressItem, itemComponentHeight} = props;
 
   const { width } = Dimensions.get('window');

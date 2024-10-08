@@ -5,7 +5,7 @@ import { TWStyles } from 'twrn-styles';
 const Row = (props: TRow) => {
   const { children, columnGap = 8, padding = 8, backgroundColor = 'white', alignItems = 'center', justifyContent = 'flex-start', containerStyle} = props;
   return (
-    <View style={[TWStyles.row, { borderWidth: 1, columnGap, backgroundColor, padding, alignItems, justifyContent}, containerStyle]}  {...props}>
+    <View style={[TWStyles.row, { columnGap, backgroundColor, padding, alignItems, justifyContent}, containerStyle]}  {...props}>
       {children}
     </View>
   )

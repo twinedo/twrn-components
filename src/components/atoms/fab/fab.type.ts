@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { PressableProps, ViewStyle } from "react-native";
 
-export type TFab = {
+export type TFabProps = {
     backgroundColor?: string;
     children?: ReactNode;
     onPress?: () => void;

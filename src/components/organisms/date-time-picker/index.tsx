@@ -3,11 +3,11 @@ import { useState } from 'react'
 import { TWColors, TWStyles } from 'twrn-styles'
 import DateTimePicker, { type DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import { styles } from './date-time-picker.style';
-import type { TDateTimePicker } from './date-time-picker.type';
+import type { TDateTimePickerProps } from './date-time-picker.type';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import moment from 'moment';
 
-const DateTime = (props: TDateTimePicker) => {
+const DateTime = (props: TDateTimePickerProps) => {
   const { dateFormat = 'DD MMM YYYY', errors, icon, iconColor = TWColors.GREYB11, title, titleStyle, required, onSelect, textErrorStyle, placeholder } = props
 
   const [selectedDate, setSelectedDate] = useState(new Date())
