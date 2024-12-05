@@ -1,18 +1,29 @@
-import { StyleSheet, View, Text, ScrollView, KeyboardAvoidingView, Alert, Platform, TouchableWithoutFeedback, Keyboard, SafeAreaView } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  KeyboardAvoidingView,
+  Alert,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
+  SafeAreaView,
+} from 'react-native';
 import { Button, Input, Spacer } from 'twrn-components';
 import { Forms, KeyboardAvoidView } from '../../src/components';
 import { useForm } from 'react-hook-form';
 import { useMemo, useState } from 'react';
 import { EInputType } from '../../src/components/organisms/forms/forms.enum';
 import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup'
+import { yupResolver } from '@hookform/resolvers/yup';
 import { TWStyles } from 'twrn-styles';
 import type { InputField } from '../../src/components/organisms/forms/forms.type';
 
 export const relationList = [
   {
     label: 'AYAH',
-    value: 'AYAH'
+    value: 'AYAH',
   },
   {
     label: 'IBU',
@@ -38,7 +49,7 @@ export const relationList = [
     label: 'SEPUPU',
     value: 'SEPUPU',
   },
-]
+];
 
 export type TEmergencyContact = {
   contactName: string;
@@ -48,140 +59,170 @@ export type TEmergencyContact = {
   address1: string;
   address2: string;
   address3: string;
-}
+};
 
 export default function App() {
-
   const inputFields = useMemo(() => {
     return [
-        {
-            inputType: EInputType.TEXT_FIELD,
-            controlName: 'contactName',
-            title: 'Contact Name',
-            placeholder: 'Contact Name',
-            isRequired: true,
-            maxLength: 30,
-            // icon: <Ionicons name="person" size={24} color={PruColor.grey99} />
-        },
-        {
-            inputType: EInputType.DROPDOWN,
-            controlName: 'relation',
-            title: 'Relation',
-            placeholder: 'Relation',
-            isRequired: true,
-            maxLength: 30,
-            dropdownProps: {
-              keyValue: 'value',
-              data: [{label: 'a',value: 'a'},{label: 'c', value:'c'}]
-            }
-        },
-        {
-          inputType: EInputType.DATE_TIME,
-          controlName: 'date',
-          title: 'Date',
-          placeholder: new Date(),
-          isRequired: true,
-          dateTimeProps: {
-            dateFormat: 'DD MMMM YYYY'
-          }
+      {
+        inputType: EInputType.TEXT_FIELD,
+        controlName: 'contactName',
+        title: 'Contact Name',
+        placeholder: 'Contact Name',
+        isRequired: true,
+        maxLength: 30,
+        // icon: <Ionicons name="person" size={24} color={PruColor.grey99} />
       },
-        {
-            inputType: EInputType.TEXT_FIELD,
-            controlName: 'phoneNumber',
-            title: 'Phone Number',
-            placeholder: 'Phone Number',
-            isRequired: true,
-            maxLength: 30,
+      {
+        inputType: EInputType.DROPDOWN,
+        controlName: 'relation',
+        title: 'Relation',
+        placeholder: 'Relation',
+        isRequired: true,
+        maxLength: 30,
+        dropdownProps: {
+          keyValue: 'value',
+          data: [
+            { label: 'a', value: 'a' },
+            { label: 'c', value: 'c' },
+          ],
         },
-        {
-            inputType: EInputType.TEXT_FIELD,
-            controlName: 'address1',
-            title: 'Street',
-            placeholder: 'Street',
-            isRequired: true,
-            maxLength: 30,
+      },
+      {
+        inputType: EInputType.DATE_TIME,
+        controlName: 'date',
+        title: 'Date',
+        placeholder: new Date(),
+        isRequired: true,
+        dateTimeProps: {
+          dateFormat: 'DD MMMM YYYY',
         },
-        {
-            inputType: EInputType.TEXT_FIELD,
-            controlName: 'address2',
-            title: 'RT RW',
-            placeholder: 'RT RW',
-            isRequired: true,
-            maxLength: 30,
-            icon: <View style={{ height: 24, width: 24 }} />
-        },
-        {
-            inputType: EInputType.TEXT_FIELD,
-            controlName: 'address3',
-            title: 'District',
-            placeholder: 'District',
-            isRequired: true,
-            maxLength: 30,
-            icon: <View style={{ height: 24, width: 24 }} />
-        },
+      },
+      {
+        inputType: EInputType.TEXT_FIELD,
+        controlName: 'phoneNumber',
+        title: 'Phone Number',
+        placeholder: 'Phone Number',
+        isRequired: true,
+        maxLength: 30,
+      },
+      {
+        inputType: EInputType.TEXT_FIELD,
+        controlName: 'address1',
+        title: 'Street',
+        placeholder: 'Street',
+        isRequired: true,
+        maxLength: 30,
+      },
+      {
+        inputType: EInputType.TEXT_FIELD,
+        controlName: 'address2',
+        title: 'RT RW',
+        placeholder: 'RT RW',
+        isRequired: true,
+        maxLength: 30,
+        icon: <View style={{ height: 24, width: 24 }} />,
+      },
+      {
+        inputType: EInputType.TEXT_FIELD,
+        controlName: 'address3',
+        title: 'District',
+        placeholder: 'District',
+        isRequired: true,
+        maxLength: 30,
+        icon: <View style={{ height: 24, width: 24 }} />,
+      },
     ] as InputField[];
-}, []);
+  }, []);
 
-const schema = useMemo(() => {
+  const schema = useMemo(() => {
     return yup.object().shape({
-        contactName: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
-        relation: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
-        date: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
-        phoneNumber: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
-        address1: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
-        address2: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
-        address3: yup.string().required('AgentProfile:pd_common_warning_mandatory_empty'),
+      contactName: yup
+        .string()
+        .required('AgentProfile:pd_common_warning_mandatory_empty'),
+      relation: yup
+        .string()
+        .required('AgentProfile:pd_common_warning_mandatory_empty'),
+      date: yup
+        .string()
+        .required('AgentProfile:pd_common_warning_mandatory_empty'),
+      phoneNumber: yup
+        .string()
+        .required('AgentProfile:pd_common_warning_mandatory_empty'),
+      address1: yup
+        .string()
+        .required('AgentProfile:pd_common_warning_mandatory_empty'),
+      address2: yup
+        .string()
+        .required('AgentProfile:pd_common_warning_mandatory_empty'),
+      address3: yup
+        .string()
+        .required('AgentProfile:pd_common_warning_mandatory_empty'),
     });
-}, []);
+  }, []);
 
   const {
     control: control,
     handleSubmit: handleSubmit,
     formState: { isValid, errors },
     setValue,
-} = useForm({
+  } = useForm({
     mode: 'all',
     resolver: yupResolver(schema),
     defaultValues: {
-        contactName: '',
-        relation: '',
-        date: '',
-        phoneNumber: '',
-        address1: '',
-        address2: '',
-        address3: '',
+      contactName: '',
+      relation: '',
+      date: '',
+      phoneNumber: '',
+      address1: '',
+      address2: '',
+      address3: '',
     } as TEmergencyContact,
-});
+  });
 
-const checkError = useMemo(() => {
-  const keyError = Object.keys(errors);
-  return keyError.length > 0 ? errors : undefined
-}, [errors])
+  const checkError = useMemo(() => {
+    const keyError = Object.keys(errors);
+    return keyError.length > 0 ? errors : undefined;
+  }, [errors]);
 
-const onSubmit = (data) => {
-  console.log(data)
-  Alert.alert('dnwd')
-}
+  const onSubmit = (data) => {
+    console.log(data);
+    Alert.alert('dnwd');
+  };
 
-const [txtInput, setTxtInput] = useState('')
+  const [txtInput, setTxtInput] = useState('');
 
   return (
     <SafeAreaView style={TWStyles.displayFlex}>
       <KeyboardAvoidView>
-      <View style={styles.container}>
-        <Forms inputFields={inputFields} formControl={control} setFormControl={setValue} errors={errors} />
-        <Button text='Test' onPress={handleSubmit(onSubmit)} />
-        <Input
-                        placeholder='Title here'
-                        title="Title"
-                        onChangeText={setTxtInput}
-                        value={txtInput}
-                        // errors={[errors.title?.message! ?? '', 'right']}
-                    />
-        <Button text='dakwdmawkdm' onPress={() => console.log('value', txtInput)} />
-      </View>
+        <View style={styles.container}>
+          <Forms
+            inputFields={inputFields}
+            formControl={control}
+            setFormControl={setValue}
+            errors={errors}
+          />
+          <Button text="Test" onPress={handleSubmit(onSubmit)} />
+          <Input
+            placeholder="Title here"
+            title="Title"
+            onChangeText={setTxtInput}
+            value={txtInput}
+            // errors={[errors.title?.message! ?? '', 'right']}
+          />
+          <Button
+            text="dakwdmawkdm"
+            onPress={() => console.log('value', txtInput)}
+          />
+          <Input
+            placeholder="Title here"
+            onChangeText={setTxtInput}
+            value={txtInput}
+            // errors={[errors.title?.message! ?? '', 'right']}
+          />
+        </View>
       </KeyboardAvoidView>
-      </SafeAreaView>
+    </SafeAreaView>
   );
 }
 
@@ -191,7 +232,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // justifyContent: 'center',
     borderWidth: 1,
-    padding: 12
+    padding: 12,
   },
   box: {
     width: 60,
@@ -205,8 +246,7 @@ const styles = StyleSheet.create({
   content: {
     padding: 10,
     backgroundColor: 'red',
-    width: 200
-
+    width: 200,
   },
   wrapper: {
     position: 'absolute',
@@ -221,5 +261,5 @@ const styles = StyleSheet.create({
   },
   collapsed: {
     borderRadius: 10,
-  }
+  },
 });
