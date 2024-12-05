@@ -19,21 +19,35 @@ const Input: React.FC<TInputProps> = ({
   onChangeText,
   errors = ['', 'right'],
   textErrorStyle,
-  value = CDefaultValues.DEFAULT_STRING,
+  value: controlledValue,
   ...textInputProps
 }) => {
-  const [textCounter, setTextCounter] = useState(0);
+  // Use internal state only when uncontrolled
+  const [internalValue, setInternalValue] = useState<string>(
+    controlledValue || CDefaultValues.DEFAULT_STRING
+  );
+
+  // Handle character count
+  const [textCounter, setTextCounter] = useState<number>(
+    (controlledValue || '').length
+  );
+
+  const isControlled = controlledValue !== undefined;
 
   const onTextChange = useCallback(
     (val: string) => {
-      const limitedText = val.slice(0, maxLength);
-      if (onChangeText) {
-        onChangeText(limitedText);
-        if (value !== undefined) return;
-        setTextCounter(limitedText.length);
+      const limitedText = val.slice(0, maxLength || val.length);
+      if (isControlled) {
+        // Call the parent handler if the component is controlled
+        onChangeText?.(limitedText);
+      } else {
+        // Update internal state if uncontrolled
+        setInternalValue(limitedText);
+        onChangeText?.(limitedText);
       }
+      setTextCounter(limitedText.length);
     },
-    [maxLength, onChangeText, value]
+    [isControlled, maxLength, onChangeText]
   );
 
   return (
@@ -44,6 +58,7 @@ const Input: React.FC<TInputProps> = ({
         TWStyles.relative,
       ]}
     >
+      {/* Title and Counter */}
       <View
         style={[
           TWStyles.row,
@@ -58,14 +73,13 @@ const Input: React.FC<TInputProps> = ({
           </View>
         )}
         {maxLength > 0 && (
-          <View>
-            <Text style={[styles.h3, titleStyle]}>
-              {value.length ?? textCounter}/ {maxLength}
-            </Text>
-          </View>
+          <Text style={[styles.h3, titleStyle]}>
+            {textCounter}/{maxLength}
+          </Text>
         )}
       </View>
 
+      {/* Input Field */}
       <View
         style={[
           TWStyles.row,
@@ -79,13 +93,15 @@ const Input: React.FC<TInputProps> = ({
           {...textInputProps}
           style={[TWStyles.displayFlex, styles.input, style]}
           onChangeText={onTextChange}
-          value={value}
-          maxLength={maxLength}
+          value={isControlled ? controlledValue : internalValue}
+          maxLength={maxLength || undefined}
         />
         {postfix && (
           <View style={[styles.postfix, postfixStyle]}>{postfix}</View>
         )}
       </View>
+
+      {/* Error Message */}
       {errors[0]?.length! > 0 && (
         <Text
           style={[
