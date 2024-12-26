@@ -1,29 +1,42 @@
-import { Dimensions, FlatList, Pressable, View } from 'react-native'
+import { FlatList, Pressable, View, type DimensionValue } from 'react-native';
 import type { TGridProps } from './grid.type';
 
 const Grid = (props: TGridProps) => {
-  const {data, id, gridSize = 2, itemComponent, onPressItem, itemComponentHeight} = props;
+  const {
+    data,
+    id,
+    gridSize = 3,
+    itemComponent,
+    onPressItem,
+    gap = 0,
+    gapHorizontal = 0,
+    gapVertical = 0,
+  } = props;
 
-  const { width } = Dimensions.get('window');
-  const itemWidth = (width - (gridSize - 1) * 8 - 10) / gridSize;
-  const itemHeight = itemComponentHeight ?? itemWidth;
+  const itemWidth = `${100 / gridSize}%` as DimensionValue;
 
   return (
     <View>
       <FlatList
         data={data}
-        keyExtractor={(item) => typeof item === 'string' ? item : item[id]}
+        keyExtractor={(item) => (typeof item === 'string' ? item : item[id])}
         numColumns={gridSize}
-        contentContainerStyle={{ flexGrow: 1, gap: 8 }}
-        columnWrapperStyle={{ gap: 8 }}
-        renderItem={({item, index}) => (
-          <Pressable onPress={() => onPressItem?.(item, index)} style={{width: itemWidth, height: itemHeight}}>
-            {itemComponent(item, index)}
+        renderItem={({ item, index }) => (
+          <Pressable
+            onPress={() => onPressItem?.(item, index)}
+            style={{
+              width: itemWidth,
+              padding: gap,
+              paddingHorizontal: gapHorizontal,
+              paddingVertical: gapVertical,
+            }}
+          >
+            <View style={{ width: '100%' }}>{itemComponent(item, index)}</View>
           </Pressable>
         )}
       />
     </View>
-  )
-}
+  );
+};
 
-export default Grid
+export default Grid;

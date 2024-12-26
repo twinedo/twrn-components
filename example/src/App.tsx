@@ -11,13 +11,13 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { Button, Input, Spacer } from 'twrn-components';
-import { Forms, KeyboardAvoidView } from '../../src/components';
+import { Forms, Grid, KeyboardAvoidView } from '../../src/components';
 import { useForm } from 'react-hook-form';
 import { useMemo, useState } from 'react';
 import { EInputType } from '../../src/components/organisms/forms/forms.enum';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { TWStyles } from 'twrn-styles';
+import { TWSizes, TWStyles } from 'twrn-styles';
 import type { InputField } from '../../src/components/organisms/forms/forms.type';
 
 export const relationList = [
@@ -219,6 +219,24 @@ export default function App() {
             onChangeText={setTxtInput}
             value={txtInput}
             // errors={[errors.title?.message! ?? '', 'right']}
+          />
+          <Grid
+            data={Array(4).fill('')}
+            id={Math.random()}
+            gridSize={3}
+            itemComponent={(item, i) => (
+              <View
+                style={[
+                  TWStyles.verticalDefaultPadding,
+                  TWStyles.horizontalDefaultPadding,
+                  {borderWidth: 1}
+                ]}
+              >
+                <Text>xahbwdjhabw</Text>
+                <Text>xahbwdjhabw</Text>
+                <Text>xahbwdjhabw</Text>
+              </View>
+            )}
           />
         </View>
       </KeyboardAvoidView>
