@@ -1,7 +1,8 @@
 import { FlatList, Pressable, View, type DimensionValue } from 'react-native';
 import type { TGridProps } from './grid.type';
+import { forwardRef } from 'react';
 
-const Grid = (props: TGridProps) => {
+const Grid = forwardRef<FlatList, TGridProps>((props, ref) => {
   const {
     data,
     id,
@@ -18,7 +19,7 @@ const Grid = (props: TGridProps) => {
   return (
     <View>
       <FlatList
-        {...props}
+        ref={ref}
         data={data}
         keyExtractor={(item) => (typeof item === 'string' ? item : item[id])}
         numColumns={gridSize}
@@ -40,6 +41,6 @@ const Grid = (props: TGridProps) => {
       />
     </View>
   );
-};
+});
 
 export default Grid;

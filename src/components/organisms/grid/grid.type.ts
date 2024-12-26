@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import type { FlatListProps } from 'react-native';
 
 export type TGridProps = {
   data: any[];
@@ -10,4 +9,4 @@ export type TGridProps = {
   gapVertical?: number;
   itemComponent: (item: any, index: number) => ReactNode;
   onPressItem?: (selectedItem?: any, index?: number) => void;
-} & FlatListProps<ReactNode>;
+}
