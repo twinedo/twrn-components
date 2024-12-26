@@ -8,7 +8,7 @@ const Grid = (props: TGridProps) => {
     gridSize = 3,
     itemComponent,
     onPressItem,
-    gap = 0,
+    gap = 4,
     gapHorizontal = 0,
     gapVertical = 0,
   } = props;
@@ -18,18 +18,21 @@ const Grid = (props: TGridProps) => {
   return (
     <View>
       <FlatList
+        {...props}
         data={data}
         keyExtractor={(item) => (typeof item === 'string' ? item : item[id])}
         numColumns={gridSize}
         renderItem={({ item, index }) => (
           <Pressable
             onPress={() => onPressItem?.(item, index)}
-            style={{
-              width: itemWidth,
-              padding: gap,
-              paddingHorizontal: gapHorizontal,
-              paddingVertical: gapVertical,
-            }}
+            style={[
+              {
+                width: itemWidth,
+              },
+              gap ? { padding: gap } : {},
+              gapHorizontal ? { paddingHorizontal: gapHorizontal } : {},
+              gapVertical ? { paddingVertical: gapVertical } : {},
+            ]}
           >
             <View style={{ width: '100%' }}>{itemComponent(item, index)}</View>
           </Pressable>
