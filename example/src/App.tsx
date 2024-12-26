@@ -224,12 +224,11 @@ export default function App() {
             data={Array(4).fill('')}
             id={Math.random()}
             gridSize={3}
-            itemComponent={(item, i) => (
+            itemComponent={() => (
               <View
                 style={[
                   TWStyles.verticalDefaultPadding,
                   TWStyles.horizontalDefaultPadding,
-                  {borderWidth: 1}
                 ]}
               >
                 <Text>xahbwdjhabw</Text>
@@ -248,7 +247,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    // justifyContent: 'center',
     borderWidth: 1,
     padding: 12,
   },
@@ -259,7 +257,6 @@ const styles = StyleSheet.create({
   },
   animatedContainer: {
     overflow: 'hidden',
-    // position: 'absolute'
   },
   content: {
     padding: 10,
