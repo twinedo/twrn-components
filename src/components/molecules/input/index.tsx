@@ -16,6 +16,7 @@ const Input = forwardRef<TextInput, TInputProps>(
       postfixStyle,
       title = '',
       titleStyle,
+      inputStyle,
       required,
       maxLength = 0,
       onChangeText,
@@ -93,7 +94,7 @@ const Input = forwardRef<TextInput, TInputProps>(
           <TextInput
             {...textInputProps}
             ref={ref}
-            style={[TWStyles.displayFlex, styles.input, style]}
+            style={[TWStyles.displayFlex, styles.input, style, inputStyle]}
             onChangeText={onTextChange}
             value={isControlled ? controlledValue : internalValue}
             maxLength={maxLength || undefined}
