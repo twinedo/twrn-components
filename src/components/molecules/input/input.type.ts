@@ -8,7 +8,7 @@ export type TInputProps = {
   containerStyle?: ViewStyle | ViewStyle[];
   prefixStyle?: ViewStyle | ViewStyle[];
   postfixStyle?: ViewStyle | ViewStyle[];
-  inputStyle?: ViewStyle | ViewStyle[];
+  inputStyle?: TextStyle | TextStyle[];
   title?: ReactNode | string;
   titleStyle?: TextStyle;
   required?: boolean;
