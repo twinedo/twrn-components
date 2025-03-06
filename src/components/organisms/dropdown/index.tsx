@@ -1,7 +1,8 @@
+
 import { Text, View } from 'react-native'
 import SelectDropdown from 'react-native-select-dropdown'
 import { styles } from './dropdown.style'
-import Entypo from 'react-native-vector-icons/Entypo'
+import Entypo from '@react-native-vector-icons/entypo'
 import type { TDropdownProps } from './dropdown.type'
 import { TWColors, TWStyles } from 'twrn-styles'
 import { memo } from 'react'
@@ -52,8 +53,9 @@ const Dropdown = (props: TDropdownProps) => {
                 <Entypo name={isOpened ? 'chevron-up' : 'chevron-down'} color={iconColor} style={styles.dropdownButtonArrowStyle} />
               </View>
             )
+          } else {
+            return renderButton(selectedItem, isOpened);
           }
-          return renderButton(selectedItem, isOpened);
         }}
         renderItem={(item, index, isSelected) => {
           if (!renderItem) {
@@ -63,8 +65,9 @@ const Dropdown = (props: TDropdownProps) => {
                 </Text>
               </View>
             );
+          } else {
+            return renderItem(item, index, isSelected)
           }
-          return renderItem(item, index, isSelected)
         }}
         dropdownStyle={styles.dropdownMenuStyle}
       />
