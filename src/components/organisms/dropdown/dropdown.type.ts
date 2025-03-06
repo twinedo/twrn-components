@@ -1,6 +1,7 @@
 import type { TextStyle, ViewStyle } from "react-native";
 import type { SelectDropdownProps } from "react-native-select-dropdown";
 import type { DropdownFields } from "../forms/forms.type";
+import type { ReactNode } from "react";
 
 export type TDropdownProps = {
   data: string[] | DropdownFields[];
@@ -8,6 +9,7 @@ export type TDropdownProps = {
   keyValue?: string;
   renderItem?: (selectedItem: any, isOpened: boolean) => React.ReactNode;
   renderButton?: (selectedItem: any, index: number, isSelected: boolean) => React.ReactNode;
+  icon?: ReactNode;
   iconColor?: string;
   title?: string;
   titleStyle?: TextStyle;

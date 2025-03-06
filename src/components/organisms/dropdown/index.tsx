@@ -2,7 +2,7 @@
 import { Text, View } from 'react-native'
 import SelectDropdown from 'react-native-select-dropdown'
 import { styles } from './dropdown.style'
-import Entypo from '@react-native-vector-icons/entypo'
+import Entypo from 'react-native-vector-icons/Entypo'
 import type { TDropdownProps } from './dropdown.type'
 import { TWColors, TWStyles } from 'twrn-styles'
 import { memo } from 'react'
@@ -14,6 +14,7 @@ const Dropdown = (props: TDropdownProps) => {
     keyValue,
     renderButton = undefined,
     renderItem = undefined,
+    icon,
     iconColor = TWColors.GREYB11,
     title,
     required,
@@ -50,7 +51,7 @@ const Dropdown = (props: TDropdownProps) => {
               <View style={[errors[0]?.length > 0 ? styles.dropdownButtonErrorStyle : styles.dropdownButtonStyle, errors[0]?.length > 0 ? dropdownButtonErrorStyle : dropdownButtonStyle]}>
                 <Text style={[selectedItem ? styles.dropdownButtonTxtStyle : styles.dropdownButtonTxtSelectedStyle, dropdownButtonTxtStyle]}>
                   {selectedItem && typeof selectedItem === 'object' ? selectedItem[keyValue ?? ''] : (selectedItem ?? placeholder)}                </Text>
-                <Entypo name={isOpened ? 'chevron-up' : 'chevron-down'} color={iconColor} style={styles.dropdownButtonArrowStyle} />
+                {!icon && <Entypo name={isOpened ? 'chevron-up' : 'chevron-down'} color={iconColor} style={styles.dropdownButtonArrowStyle} />}
               </View>
             )
           } else {

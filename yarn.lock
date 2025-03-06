@@ -2354,23 +2354,6 @@
     serve-static "^1.13.1"
     ws "^6.2.2"
 
-"@react-native-community/cli-tools@^15.1.2":
-  version "15.1.3"
-  resolved "https://registry.npmjs.org/@react-native-community/cli-tools/-/cli-tools-15.1.3.tgz"
-  integrity sha512-2RzoUKR+Y03ijBeeSoCSQihyN6dxy3fbHjraO4MheZZUzt/Yd1VMEDd0R5aa6rtiRDoknbHt45RL2GMa8MSaEA==
-  dependencies:
-    appdirsjs "^1.2.4"
-    chalk "^4.1.2"
-    execa "^5.0.0"
-    find-up "^5.0.0"
-    mime "^2.4.1"
-    open "^6.2.0"
-    ora "^5.4.1"
-    prompts "^2.4.2"
-    semver "^7.5.2"
-    shell-quote "^1.7.3"
-    sudo-prompt "^9.0.0"
-
 "@react-native-community/cli-tools@13.6.9":
   version "13.6.9"
   resolved "https://registry.npmjs.org/@react-native-community/cli-tools/-/cli-tools-13.6.9.tgz"
@@ -2424,43 +2407,6 @@
   integrity sha512-K/KgaJbLtjMpx4PaG4efrVIcSe6+DbLufeX1lwPB5YY8i3sq9dOh6WcAcMTLbaRTUpurebQTkl7puHPFm9GalA==
   dependencies:
     invariant "^2.2.4"
-
-"@react-native-vector-icons/common@^11.0.0":
-  version "11.0.0"
-  resolved "https://registry.npmjs.org/@react-native-vector-icons/common/-/common-11.0.0.tgz"
-  integrity sha512-Ee0UAOsJRAUKb/yzs6qRSuxxLX7LbyQP/jikik9HZwfSCO81MkHwklXbYg6/+NAaYPyLCa3VsATorWY3f5M3lQ==
-  dependencies:
-    "@react-native-community/cli-tools" "^15.1.2"
-    picocolors "^1.1.1"
-    plist "^3.1.0"
-
-"@react-native-vector-icons/entypo@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@react-native-vector-icons/entypo/-/entypo-1.0.1.tgz"
-  integrity sha512-z5uo3vkNkXeTDKGUhYRhGDxqagmRf5cCfVARrbtbHB0G5VGuRQ5Pp25eV8QiCL7MU8cLE+kc4hNo9pz0qr3UHg==
-  dependencies:
-    "@react-native-vector-icons/common" "^11.0.0"
-
-"@react-native-vector-icons/evil-icons@^1.10.1":
-  version "1.10.1"
-  resolved "https://registry.npmjs.org/@react-native-vector-icons/evil-icons/-/evil-icons-1.10.1.tgz"
-  integrity sha512-bH46bNhDYXui22TeKL4KTrzqvPbO0ZA3ppJR88ZnfRt9GWwEQTqV2CImEHrsPqyPnrk3crWgP3KXP9C227Gm5w==
-  dependencies:
-    "@react-native-vector-icons/common" "^11.0.0"
-
-"@react-native-vector-icons/fontawesome6@^6.7.1":
-  version "6.7.1"
-  resolved "https://registry.npmjs.org/@react-native-vector-icons/fontawesome6/-/fontawesome6-6.7.1.tgz"
-  integrity sha512-4B23wt80oX7hUgca11X8E8DLvf9rKAwxwZQkhc+6FdSq2lWXMg6Sr2a5v99hUQnefyJk4emry30jQapjjyhGtA==
-  dependencies:
-    "@react-native-vector-icons/common" "^11.0.0"
-
-"@react-native-vector-icons/ionicons@^7.4.0":
-  version "7.4.0"
-  resolved "https://registry.npmjs.org/@react-native-vector-icons/ionicons/-/ionicons-7.4.0.tgz"
-  integrity sha512-Jzqd5HITWNBNJMzg/88PVdz7mZVYSx0eRovI+ziN3r97bLZDzoDgHPI6YWVTT5bk4lPxm0ojP1//+5e5ztVAag==
-  dependencies:
-    "@react-native-vector-icons/common" "^11.0.0"
 
 "@react-native/assets-registry@0.74.87":
   version "0.74.87"
@@ -9521,7 +9467,7 @@ pkg-up@^3.1.0:
   dependencies:
     find-up "^3.0.0"
 
-plist@^3.0.5, plist@^3.1.0:
+plist@^3.0.5:
   version "3.1.0"
   resolved "https://registry.npmjs.org/plist/-/plist-3.1.0.tgz"
   integrity sha512-uysumyrvkUX0rX/dEVqt8gC3sTBzd4zoWfLeS29nb53imdaXVvLINYXTI2GNqzaMuvacNx4uJQ8+b3zXR0pkgQ==
