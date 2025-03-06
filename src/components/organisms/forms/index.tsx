@@ -34,8 +34,8 @@ const Forms = (props: FormInputProps) => {
                               keyValue={inputField.dropdownProps?.keyValue ?? ''}
                               data={inputField?.dropdownProps?.data!}
                               placeholder={inputField.placeholder}
-                              renderButton={undefined ?? inputField.dropdownProps?.renderButton!}
-                              renderItem={undefined ?? inputField.dropdownProps?.renderItem!}
+                              renderButton={inputField.dropdownProps?.renderButton! ?? undefined}
+                              renderItem={inputField.dropdownProps?.renderItem! ?? undefined}
                               onSelect={(selectedValue: any) => {
                                 onChange(selectedValue);
                                 setFormControl(inputField.controlName, selectedValue);
